@@ -1,26 +1,26 @@
-let {src, dest, series, watch} = require('gulp'),
-    CSSLinter = require('gulp-stylelint'),
-    { deleteAsync } = require('del'),
-    babel = require('gulp-babel'),
-    htmlCompressor = require('gulp-htmlmin'),
-    jsCompressor = require('gulp-uglify'),
-    cssCompressor = require('gulp-clean-css'),
-    jsLinter = require('gulp-eslint'),
-    browserSync = require ('browser-sync'),
+let {src, dest, series, watch} = require(`gulp`),
+    CSSLinter = require(`gulp-stylelint`),
+    { deleteAsync } = require(`del`),
+    babel = require(`gulp-babel`),
+    htmlCompressor = require(`gulp-htmlmin`),
+    jsCompressor = require(`gulp-uglify`),
+    cssCompressor = require(`gulp-clean-css`),
+    jsLinter = require(`gulp-eslint`),
+    browserSync = require (`browser-sync`),
     reload = browserSync.reload;
 
-let browserChoice = 'default';
+let browserChoice = `default`;
 
 let compressHTML = () => {
-    return src('./*.html')
+    return src(`./*.html`)
         .pipe(htmlCompressor({collapseWhitespace : true}))
-        .pipe(dest('prod'));
+        .pipe(dest(`prod`));
 };
 
 let lintJS = () => {
-    return src('scripts/*.js')
+    return src(`scripts/*.js`)
         .pipe(jsLinter())
-        .pipe(jsLinter.formatEach('compact'));
+        .pipe(jsLinter.formatEach(`compact`));
 };
 
 let transpileJSForDev = () => {
@@ -83,8 +83,7 @@ exports.transpileJSForProd = transpileJSForProd;
 exports.lintCSS = lintCSS;
 exports.compressCSSForProd = compressCSSForProd;
 exports.clean = clean;
-exports.default = series(
-    clean,
+exports.default = series(clean,
     lintCSS,
     lintJS,
     transpileJSForDev,
