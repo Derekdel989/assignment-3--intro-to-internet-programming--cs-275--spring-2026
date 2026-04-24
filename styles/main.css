@@ -52,10 +52,6 @@ header {
   pointer-events: auto;
 }
 
-/* ==============================
-   MODAL OVERLAY (FULL SCREEN)
-============================== */
-
 .modal-panel {
   position: fixed;
   top: 0;
